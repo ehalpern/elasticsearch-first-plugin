@@ -15,7 +15,6 @@ import java.io.IOException;
 public class FirstParser implements Aggregator.Parser {
   private static ESLogger LOG = ESLoggerFactory.getLogger(FirstParser.class.getName());
 
-
   @Override
   public String type() {
     return InternalFirst.TYPE.name();
@@ -27,7 +26,7 @@ public class FirstParser implements Aggregator.Parser {
   {
     LOG.info("Parsing " + aggregationName);
     ValuesSourceParser vsParser =
-      ValuesSourceParser.any(aggregationName, InternalFirst.TYPE, context)
+      ValuesSourceParser.bytes(aggregationName, InternalFirst.TYPE, context)
         .targetValueType(ValueType.STRING)
         .formattable(true)
         .build();

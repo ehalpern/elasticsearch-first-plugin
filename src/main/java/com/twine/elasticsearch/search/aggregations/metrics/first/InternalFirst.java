@@ -51,10 +51,9 @@ public class InternalFirst extends InternalMetricsAggregation {
 
     @Override
     public InternalFirst reduce(ReduceContext reduceContext) {
-        LOG.info("Reducing " + reduceContext.aggregations());
-
         for (InternalAggregation aggregation : reduceContext.aggregations()) {
             Object value = ((InternalFirst)aggregation).value;
+            LOG.info("Reducing " + name + " " + value);
             return new InternalFirst(name, value);
         }
         return new InternalFirst(name, null);
