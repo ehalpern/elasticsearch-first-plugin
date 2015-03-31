@@ -67,7 +67,7 @@ public class FirstAggregator extends MetricsAggregator {
     LOG.info("Collecting " + doc + ":" + owningBucketOrdinal);
     bucketValues = bigArrays.grow(bucketValues, owningBucketOrdinal + 1);
     values.setDocument(doc);
-    Object value = (values.count() > 0) ? values.valueAt(0) : null;
+    Object value = (values.count() > 0) ? values.valueAt(0).utf8ToString() : null;
     bucketValues.set(owningBucketOrdinal, value);
   }
 
