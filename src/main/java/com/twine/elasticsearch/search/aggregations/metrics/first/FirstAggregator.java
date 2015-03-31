@@ -22,10 +22,11 @@ import org.elasticsearch.search.aggregations.support.ValuesSourceConfig;
 import java.io.IOException;
 
 /**
- * A field data based aggregator that counts the number of values a specific field has within the aggregation context.
+ * A field data based aggregator that counts the number of values a specific field has within
+ * the aggregation context.
  *
- * This aggregator works in a multi-bucket mode, that is, when serves as a sub-aggregator, a single aggregator instance aggregates the
- * counts for all buckets owned by the parent aggregator)
+ * This aggregator works in a multi-bucket mode, that is, when serves as a sub-aggregator, a singlei
+ * aggregator instance aggregates the  counts for all buckets owned by the parent aggregator)
  */
 public class FirstAggregator extends MetricsAggregator {
   private final ValuesSource.Bytes valuesSource;

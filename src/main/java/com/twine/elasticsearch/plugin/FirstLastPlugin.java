@@ -12,7 +12,7 @@ public class FirstLastPlugin extends AbstractPlugin
     private static ESLogger LOG = ESLoggerFactory.getLogger(FirstLastPlugin.class.getName());
     @Override
     public String name() {
-        return "First Last Plugin";
+        return "first";
     }
 
     @Override
