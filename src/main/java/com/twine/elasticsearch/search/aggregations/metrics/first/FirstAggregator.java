@@ -64,21 +64,24 @@ public class FirstAggregator extends MetricsAggregator {
   @Override
   // map
   public void collect(int doc, long owningBucketOrdinal) throws IOException {
-    LOG.info("Collecting " + doc + ":" + owningBucketOrdinal);
     bucketValues = bigArrays.grow(bucketValues, owningBucketOrdinal + 1);
-    values.setDocument(doc);
-    Object value = (values.count() > 0) ? values.valueAt(0).utf8ToString() : null;
-    bucketValues.set(owningBucketOrdinal, value);
+    if (bucketValues.get(owningBucketOrdinal) != null) {
+      values.setDocument(doc);
+      Object value = (values.count() > 0) ? values.valueAt(0).utf8ToString() : null;
+      LOG.info("Collecting: record " + value + " for bucket " + owningBucketOrdinal);
+      bucketValues.set(owningBucketOrdinal, value);
+    }
   }
 
   @Override
   // combine
   public InternalAggregation buildAggregation(long owningBucketOrdinal) {
-    LOG.info("Combining " + owningBucketOrdinal);
     if (valuesSource == null) {
       return new InternalFirst(name, null);
     } else {
-      return new InternalFirst(name, bucketValues.get(owningBucketOrdinal));
+      Object value = bucketValues.get(owningBucketOrdinal);
+      LOG.info("Combining " + owningBucketOrdinal + ": " + value);
+      return new InternalFirst(name, value);
     }
   }
 

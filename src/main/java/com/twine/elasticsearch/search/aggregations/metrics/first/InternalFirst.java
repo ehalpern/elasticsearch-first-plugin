@@ -64,14 +64,14 @@ public class InternalFirst extends InternalMetricsAggregation {
     public void readFrom(StreamInput in) throws IOException {
         name = in.readString();
         valueFormatter = ValueFormatterStreams.readOptional(in);
-        value = in.readGenericValue();
+        value = in.readString();
     }
 
     @Override
     public void writeTo(StreamOutput out) throws IOException {
         out.writeString(name);
         ValueFormatterStreams.writeOptional(valueFormatter, out);
-        out.writeGenericValue(value);
+        out.writeString((String)value);
     }
 
     @Override
