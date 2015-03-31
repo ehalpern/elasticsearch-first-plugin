@@ -3,6 +3,8 @@ package com.twine.elasticsearch.search.aggregations.metrics.first;
 
 import org.apache.lucene.index.AtomicReaderContext;
 import org.elasticsearch.common.lease.Releasables;
+import org.elasticsearch.common.logging.ESLogger;
+import org.elasticsearch.common.logging.ESLoggerFactory;
 import org.elasticsearch.common.util.DoubleArray;
 import org.elasticsearch.common.util.LongArray;
 import org.elasticsearch.common.util.ObjectArray;
@@ -29,6 +31,8 @@ import java.io.IOException;
  * aggregator instance aggregates the  counts for all buckets owned by the parent aggregator)
  */
 public class FirstAggregator extends MetricsAggregator {
+  private static ESLogger LOG = ESLoggerFactory.getLogger(MetricsAggregator.class.getName());
+
   private final ValuesSource.Bytes valuesSource;
   private SortedBinaryDocValues values;
 
@@ -56,6 +60,7 @@ public class FirstAggregator extends MetricsAggregator {
   @Override
   // map
   public void collect(int doc, long owningBucketOrdinal) throws IOException {
+    LOG.info("Collecting " + doc + ":" + owningBucketOrdinal);
     bucketValues = bigArrays.grow(bucketValues, owningBucketOrdinal + 1);
     values.setDocument(doc);
     Object value = (values.count() > 0) ? values.valueAt(0) : null;
@@ -65,6 +70,7 @@ public class FirstAggregator extends MetricsAggregator {
   @Override
   // combine
   public InternalAggregation buildAggregation(long owningBucketOrdinal) {
+    LOG.info("Combining " + owningBucketOrdinal);
     if (valuesSource == null) {
       return new InternalFirst(name, null);
     } else {
