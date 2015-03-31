@@ -38,7 +38,11 @@ public class FirstAggregator extends MetricsAggregator {
 
   private ObjectArray bucketValues;
 
-  public FirstAggregator(String name, long estimatedBucketsCount, ValuesSource.Bytes valuesSource, AggregationContext context, Aggregator parent) {
+  public FirstAggregator(
+    String name, long estimatedBucketsCount, 
+    ValuesSource.Bytes valuesSource, 
+    AggregationContext context, Aggregator parent
+  ) {
     super(name, estimatedBucketsCount, context, parent);
     this.valuesSource = valuesSource;
     if (valuesSource != null) {
