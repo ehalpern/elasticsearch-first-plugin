@@ -8,7 +8,7 @@ Installation
 ------------
 
 ```
-bin/plugin --install geoshape-plugin --url "https://github.com/ehalpern/elasticsearch-plugin-first-last/releases/download/v1.0/elasticsearch-first-last-plugin-1.0.zip"
+bin/plugin --install first-last-plugin --url TBD
 ```
 
 ### First aggregation
