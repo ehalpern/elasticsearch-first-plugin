@@ -1,6 +1,6 @@
 # Elasticsearch first/last plugin 
 
-## (WORK IN PROGRESS)
+* (WORK IN PROGRESS)*
 
 This plugin adds `first` and `last` aggregation functions.  
 
