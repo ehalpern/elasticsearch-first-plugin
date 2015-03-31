@@ -1,4 +1,6 @@
-# Elasticsearch first/last plugin (WORK IN PROGRESS)
+# Elasticsearch first/last plugin 
+
+## (WORK IN PROGRESS)
 
 This plugin adds `first` and `last` aggregation functions.  
 
@@ -15,10 +17,7 @@ bin/plugin --install geoshape-plugin --url "https://github.com/ehalpern/elastics
 
 The `first` function selects a value from the first document encountered in the aggregation group.
 
-`first` parameters are :
- - field : the field to extract.
-
-Example of use :
+Example:
 ```
 "aggs": {
   "<agg_name>": {
