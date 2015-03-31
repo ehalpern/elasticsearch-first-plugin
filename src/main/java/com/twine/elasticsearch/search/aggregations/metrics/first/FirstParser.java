@@ -1,5 +1,7 @@
 package com.twine.elasticsearch.search.aggregations.metrics.first;
 
+import org.elasticsearch.common.logging.ESLogger;
+import org.elasticsearch.common.logging.ESLoggerFactory;
 import org.elasticsearch.common.xcontent.XContentParser;
 import org.elasticsearch.search.aggregations.Aggregator;
 import org.elasticsearch.search.aggregations.AggregatorFactory;
@@ -11,6 +13,8 @@ import java.io.IOException;
 
 
 public class FirstParser implements Aggregator.Parser {
+  private static ESLogger LOG = ESLoggerFactory.getLogger(FirstParser.class.getName());
+
 
   @Override
   public String type() {
@@ -21,6 +25,7 @@ public class FirstParser implements Aggregator.Parser {
   public AggregatorFactory parse(String aggregationName, XContentParser parser, SearchContext context)
     throws IOException
   {
+    LOG.info("Parsing " + aggregationName);
     ValuesSourceParser vsParser =
       ValuesSourceParser.any(aggregationName, InternalFirst.TYPE, context)
         .targetValueType(ValueType.STRING)

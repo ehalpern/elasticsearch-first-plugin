@@ -61,10 +61,6 @@ public class FirstAggregator extends MetricsAggregator {
     bucketValues.set(owningBucketOrdinal, value);
   }
 
-  public Object metric(long owningBucketOrd) {
-    return valuesSource == null ? 0 : bucketValues.get(owningBucketOrd);
-  }
-
   @Override
   // combine
   public InternalAggregation buildAggregation(long owningBucketOrdinal) {
