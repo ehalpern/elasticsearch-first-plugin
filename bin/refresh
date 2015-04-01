@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+. "$DIR/env.sh"
+
+PLUGIN_NAME=first-plugin
+
+sudo $ES_HOME/bin/plugin --remove $PLUGIN_NAME
+sudo $ES_HOME/bin/plugin --install $PLUGIN_NAME --url file:///$RELEASE_DIR/elasticsearch-$PLUGIN_NAME-1.0-SNAPSHOT.zip
