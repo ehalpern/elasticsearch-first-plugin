@@ -21,7 +21,6 @@ public class FirstScripts
 
         public Object run() {
           if (values.isEmpty()) {
-            ((ArrayList<Object>)values).ensureCapacity(fields.size());
             for (int i = 0; i < fields.size(); i++) {
               values.add(source().extractValue(fields.get(i).toString()));
             }
@@ -51,7 +50,6 @@ public class FirstScripts
     public ExecutableScript newScript(final Map<String, Object> params) {
       return new AbstractSearchScript() {
         List<Object> values = XContentMapValues.extractRawValues("_aggs", params);
-        ;
 
         public Object run() {
           return values.get(0);

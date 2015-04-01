@@ -23,13 +23,15 @@ public class FirstPlugin extends AbstractPlugin {
   }
 
   public void onModule(AggregationModule aggModule) {
+    LOG.info("Registering aggregation parser");
     aggModule.addAggregatorParser(FirstParser.class);
     InternalFirst.registerStreams();
   }
 
   public void onModule(ScriptModule module) {
-    module.registerScript("firstMap",     FirstScripts.MapFactory.class);
-    module.registerScript("firstCombine", FirstScripts.CombineFactory.class);
-    module.registerScript("firstReduce", FirstScripts.ReduceFactory.class);
+    LOG.info("Registering scripts");
+    module.registerScript("first_map",     FirstScripts.MapFactory.class);
+    module.registerScript("first_combine", FirstScripts.CombineFactory.class);
+    module.registerScript("first_reduce", FirstScripts.ReduceFactory.class);
   }
 }
