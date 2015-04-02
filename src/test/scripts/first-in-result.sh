@@ -62,18 +62,14 @@ curl -s -XGET "localhost:9200/test/city/_search?search_type=count&pretty=true" -
     "match_all": { }
   },
   "aggs": {
-    "state": {
-      "terms": { "field" : "state"},
-      "aggs": {
-        "fields": {
-          "scripted_metric": {
-            "params" : { "fields": ["state"] },
-            "map_script" : "first_map",
-            "combine_script" : "first_combine",
-            "reduce_script" : "first_reduce",
-            "lang" : "native"
-          }
-        }
+    "fields": {
+      "scripted_metric": {
+        "params" : { "fields": ["state"] },
+        "init_script" : "first_init",
+        "map_script" : "first_map",
+        "combine_script" : "first_combine",
+        "reduce_script" : "first_reduce",
+        "lang" : "native"
       }
     }
   }

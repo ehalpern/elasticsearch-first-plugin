@@ -28,8 +28,8 @@ public class FirstPlugin extends AbstractPlugin {
 
   public void onModule(ScriptModule module) {
     LOG.info("Registering scripts");
-    module.registerScript("first_map",     FirstMapScriptFactory.class);
-    module.registerScript("first_combine", FirstCombineScriptFactory.class);
-    module.registerScript("first_reduce", FirstReduceScriptFactory.class);
+    module.registerScript("first_map",    MapScript.class);
+    module.registerScript("first_combine",CombineScript.class);
+    module.registerScript("first_reduce", ReduceScript.class);
   }
 }

@@ -15,10 +15,9 @@
     </parent>
 
     <properties>
-        <elasticsearch.version>1.4.4</elasticsearch.version>
+        <elasticsearch.version>1.5.0</elasticsearch.version>
+        <downloadSources>true</downloadSources>
      </properties>
-
-
 
     <dependencies>
         <dependency>
