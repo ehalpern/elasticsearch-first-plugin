@@ -44,7 +44,7 @@ public class ScriptParam
   /**
    * @return _aggs
    */
-  public static Object _aggs(Map<String, Object> params) {
-    return params.get("_aggs");
+  public static List<Object> _aggs(Map<String, Object> params) {
+    return (List<Object>)params.get("_aggs");
   }
 }

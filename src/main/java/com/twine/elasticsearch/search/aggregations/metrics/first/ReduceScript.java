@@ -14,7 +14,7 @@ public class ReduceScript implements NativeScriptFactory
   public AbstractExecutableScript newScript(final Map<String, Object> params) {
     return new AbstractSearchScript() {
       public Object run() {
-        return ScriptParam._aggs(params);
+        return ScriptParam._aggs(params).get(0);
       }
     };
   }
